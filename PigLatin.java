@@ -99,52 +99,12 @@ public class PigLatin
       if (endsWithNonLetterNonNumber(s))
       {
         String modifiedString = s.substring(0,s.length() - 1);
-        if (startsWithVowel(modifiedString))
-        {
-          finalResult += modifiedString;
-          finalResult += "hay";
-          finalResult += s.charAt(s.length() - 1);
-        }
-        else
-        {
-          if (startsWithDigraph(modifiedString))
-          {
-            finalResult += modifiedString.substring(2,modifiedString.length());
-            finalResult += modifiedString.substring(0,2);
-            finalResult += "ay";
-            finalResult += s.charAt(s.length() - 1);
-          }
-          else
-          {
-            finalResult += modifiedString.substring(1,modifiedString.length());
-            finalResult += modifiedString.charAt(0);
-            finalResult += "ay";
-            finalResult += s.charAt(s.length() - 1);
-          }
-        }
+        finalResult += pigLatin(modifiedString);
+        finalResult += s.charAt(s.length() - 1);
       }
       else
       {
-        if (startsWithVowel(s))
-        {
-          finalResult += s;
-          finalResult += "hay";
-        }
-        else
-        {
-          if (startsWithDigraph(s))
-          {
-            finalResult += s.substring(2,s.length());
-            finalResult += s.substring(0,2);
-            finalResult += "ay";
-          }
-          else
-          {
-            finalResult += s.substring(1,s.length());
-            finalResult += s.charAt(0);
-            finalResult += "ay";
-          }
-        }
+        finalResult += pigLatin(s);
       }
     }
     return finalResult;
