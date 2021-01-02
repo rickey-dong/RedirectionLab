@@ -13,6 +13,15 @@ public class PigLatin
     System.out.println(pigLatin("skee"));
     System.out.println(pigLatin("emu"));
     System.out.println(pigLatin("grade"));
+    System.out.println("=======================");
+    System.out.println(pigLatinBest("*emu"));
+    System.out.println(pigLatinBest("4chan"));
+    System.out.println(pigLatinBest("fish!"));
+    System.out.println(pigLatinBest("fish"));
+    System.out.println(pigLatinBest("the."));
+    System.out.println(pigLatinBest("cat!"));
+    System.out.println(pigLatinBest("amazing?"));
+    System.out.println(pigLatinBest("apple%"));
   }
   public static String pigLatinSimple(String s)
   {
@@ -90,34 +99,51 @@ public class PigLatin
       if (endsWithNonLetterNonNumber(s))
       {
         String modifiedString = s.substring(0,s.length() - 1);
-        if (startsWithDigraph(modifiedString))
+        if (startsWithVowel(modifiedString))
         {
-          finalResult += modifiedString.substring(2,modifiedString.length());
-          finalResult += modifiedString.substring(0,2);
-          finalResult += "ay";
+          finalResult += modifiedString;
+          finalResult += "hay";
           finalResult += s.charAt(s.length() - 1);
         }
         else
         {
-          finalResult += modifiedString.substring(1,modifiedString.length());
-          finalResult += modifiedString.charAt(0);
-          finalResult += "ay";
-          finalResult += s.charAt(s.length() - 1);
+          if (startsWithDigraph(modifiedString))
+          {
+            finalResult += modifiedString.substring(2,modifiedString.length());
+            finalResult += modifiedString.substring(0,2);
+            finalResult += "ay";
+            finalResult += s.charAt(s.length() - 1);
+          }
+          else
+          {
+            finalResult += modifiedString.substring(1,modifiedString.length());
+            finalResult += modifiedString.charAt(0);
+            finalResult += "ay";
+            finalResult += s.charAt(s.length() - 1);
+          }
         }
       }
       else
       {
-        if (startsWithDigraph(s))
+        if (startsWithVowel(s))
         {
-          finalResult += s.substring(2,s.length());
-          finalResult += s.substring(0,2);
-          finalResult += "ay";
+          finalResult += s;
+          finalResult += "hay";
         }
         else
         {
-          finalResult += s.substring(1,s.length());
-          finalResult += s.charAt(0);
-          finalResult += "ay";
+          if (startsWithDigraph(s))
+          {
+            finalResult += s.substring(2,s.length());
+            finalResult += s.substring(0,2);
+            finalResult += "ay";
+          }
+          else
+          {
+            finalResult += s.substring(1,s.length());
+            finalResult += s.charAt(0);
+            finalResult += "ay";
+          }
         }
       }
     }
