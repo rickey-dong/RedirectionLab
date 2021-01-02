@@ -7,6 +7,12 @@ public class PigLatin
     System.out.println(pigLatinSimple("david"));
     System.out.println(pigLatinSimple("aaron"));
     System.out.println(pigLatinSimple("AARON"));
+    System.out.println("=======================");
+    System.out.println(pigLatin("the"));
+    System.out.println(pigLatin("check"));
+    System.out.println(pigLatin("skee"));
+    System.out.println(pigLatin("emu"));
+    System.out.println(pigLatin("grade"));
   }
   public static String pigLatinSimple(String s)
   {
@@ -32,7 +38,29 @@ public class PigLatin
   }
   public static String pigLatin(String s)
   {
-    return "S";
+    s = s.toLowerCase();
+    String finalResult = "";
+    if (startsWithVowel(s))
+    {
+      finalResult += s;
+      finalResult += "hay";
+    }
+    else
+    {
+      if (startsWithDigraph(s))
+      {
+        finalResult += s.substring(2,s.length());
+        finalResult += s.substring(0,2);
+        finalResult += "ay";
+      }
+      else
+      {
+        finalResult += s.substring(1,s.length());
+        finalResult += s.charAt(0);
+        finalResult += "ay";
+      }
+    }
+    return finalResult;
   }
   public static boolean startsWithDigraph(String s)
   {
