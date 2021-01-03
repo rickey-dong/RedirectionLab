@@ -73,6 +73,10 @@ public class PigLatin
   }
   public static boolean startsWithDigraph(String s)
   {
+    if (s.length() < 2)
+    {
+      return false;
+    }
     String[] digraphs = {"bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", "gh", "gl",
                         "gr", "ng", "ph", "pl", "pr", "qu", "sc", "sh", "sk", "sl", "sm", 
                         "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr"};
